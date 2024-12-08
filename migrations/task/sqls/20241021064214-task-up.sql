@@ -7,7 +7,7 @@
 -- ===================== ====================
 -- 1. 用戶資料，資料表為 USER
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE TABLE "USER" (
+CREATE TABLE IF NOT EXISTS "USER" (
   "id" uuid PRIMARY KEY NOT NULL DEFAULT (gen_random_uuid()),
   "name" varchar(50) NOT NULL,
   "email" varchar(320) UNIQUE NOT NULL,
