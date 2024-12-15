@@ -285,7 +285,7 @@ SELECT * FROM "COURSE_BOOKING" WHERE user_id = (SELECT id FROM "USER" WHERE emai
     -- 2. 狀態`status` 設定為上課中
 UPDATE "COURSE_BOOKING"
 SET join_at = '2024-11-25 14:01:59', status = '上課中'
-WHERE user_id = (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io') AND status = '上課中';
+WHERE user_id = (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io') AND status = '即將授課';
 
 -- 5-6. 查詢：計算用戶王小明的購買堂數，顯示須包含以下欄位： user_id , total。 (需使用到 SUM 函式與 Group By)
 
