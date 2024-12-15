@@ -267,7 +267,7 @@ VALUES
     -- 2. 狀態`status` 設定為課程已取消
 UPDATE "COURSE_BOOKING"
 SET cancelled_at = '2024-11-24 17:00:00', status = '課程已取消'
-WHERE user_id = (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io') AND course_id = (SELECT id FROM "COURSE" WHERE name = '重訓基礎課');
+WHERE user_id = (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io') AND course_id = (select id from "COURSE" where user_id = (select id from "USER" where email = 'lee2000@hexschooltest.io'));
 
 -- 5-3. 新增：`王小明`再次預約 `李燕容`   的課程，請在`COURSE_BOOKING`新增一筆資料：
     -- 1. 預約人設為`王小明`
@@ -275,7 +275,7 @@ WHERE user_id = (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io') A
     -- 3. 狀態`status` 設定為即將授課
     INSERT INTO "COURSE_BOOKING" (user_id, course_id, booking_at, status)
 VALUES 
-    ((SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io'), (SELECT id FROM "COURSE" WHERE name = '重訓基礎課'), '2024-11-24 17:10:25', '即將授課');
+    ((SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io'), (select id from "COURSE" where user_id = (select id from "USER" where email = 'lee2000@hexschooltest.io')), '2024-11-24 17:10:25', '即將授課');
 
 -- 5-4. 查詢：取得王小明所有的預約紀錄，包含取消預約的紀錄
 SELECT * FROM "COURSE_BOOKING" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'wXlTq@hexschooltest.io');
